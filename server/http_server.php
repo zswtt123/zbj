@@ -15,6 +15,8 @@ $http->on('request',function($request,$response){
       $response->cookie('singma','xssss',time()+1800);
      $response->end("sss".json_encode($request->get));
 
+     echo "123";
+
 });
 
 
