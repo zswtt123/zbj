@@ -10,6 +10,14 @@ $http->set(
            ]
 
 );
+$http->on('WorkerStart',function(swoole_server $server, $worker_id){
+
+// 定义应用目录
+define('APP_PATH', __DIR__ . '/../application/');
+
+require __DIR__ . '/../thinkphp/base.php';
+});
+
 
 $http->on('request',function($request,$response){
       $response->cookie('singma','xssss',time()+1800);
