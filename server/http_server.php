@@ -20,10 +20,45 @@ require __DIR__ . '/../thinkphp/base.php';
 
 
 $http->on('request',function($request,$response){
-      $response->cookie('singma','xssss',time()+1800);
-     $response->end("sss".json_encode($request->get));
 
-     echo "123";
+      if(isset($request->server)){
+        foreach($request->server as $k=>$v){
+         $_SERVER[strtoupper($k)] = $v;
+        }
+
+      }
+
+
+       if(isset($request->header)){
+        foreach($request->header as $k=>$v){
+         $_SERVER[strtoupper($k)] = $v;
+        }
+
+      }
+
+       if(isset($request->get)){
+        foreach($request->get as $k=>$v){
+         $_GET[$k] = $v;
+        }
+
+      }
+
+
+             if(isset($request->post)){
+        foreach($request->post as $k=>$v){
+         $_POST[$k] = $v;
+        }
+
+      }
+
+
+      // 执行应用并响应
+think\Container::get('app', [APP_PATH])
+    ->run()
+    ->send();
+
+
+
 
 });
 
