@@ -68,7 +68,7 @@ think\Container::get('app', [APP_PATH])
 //echo "-action-".request()->action().PHP_EOL;
 //$res = ob_get_contents();
 //ob_end_clean();
-$response->end($res);
+$response->end();
 //$http->close();
 });
 
