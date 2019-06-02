@@ -51,14 +51,18 @@ $http->on('request',function($request,$response){
 
       }
 
-
+ob_start();
       // 执行应用并响应
+      try{
 think\Container::get('app', [APP_PATH])
     ->run()
     ->send();
-
-
-
+}catch(\Exception $e){
+       //todo
+}
+$res = ob_get_contents();
+ob_end_clean();
+$response->end($res);
 
 });
 
