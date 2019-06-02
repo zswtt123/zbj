@@ -18,7 +18,7 @@ class Index
     public function sms(){
     	try{
 
-    	}catch(){
+    	}catch(\Exception $e){
 
     	}
     }
