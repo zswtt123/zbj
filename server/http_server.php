@@ -19,8 +19,9 @@ require __DIR__ . '/../thinkphp/base.php';
 });
 
 
-$http->on('request',function($request,$response){
-
+$http->on('request',function($request,$response) use($http){
+       // print_r($request->server);
+       $_SERVER=[];
       if(isset($request->server)){
         foreach($request->server as $k=>$v){
          $_SERVER[strtoupper($k)] = $v;
@@ -28,7 +29,7 @@ $http->on('request',function($request,$response){
 
       }
 
-
+       
        if(isset($request->header)){
         foreach($request->header as $k=>$v){
          $_SERVER[strtoupper($k)] = $v;
@@ -36,10 +37,10 @@ $http->on('request',function($request,$response){
 
       }
 
-       if(!empty($_GET)){
-         unset($_GET);
-       }
-
+       // if(!empty($_GET)){
+       //   unset($_GET);
+       // }
+        $_GET=[];
        if(isset($request->get)){
         foreach($request->get as $k=>$v){
          $_GET[$k] = $v;
@@ -47,8 +48,8 @@ $http->on('request',function($request,$response){
 
       }
 
-
-             if(isset($request->post)){
+          $_POST=[];
+        if(isset($request->post)){
         foreach($request->post as $k=>$v){
          $_POST[$k] = $v;
         }
@@ -64,10 +65,11 @@ think\Container::get('app', [APP_PATH])
 }catch(\Exception $e){
        //todo
 }
+//echo "-action-".request()->action().PHP_EOL;
 $res = ob_get_contents();
 ob_end_clean();
 $response->end($res);
-
+//$http->close();
 });
 
 
