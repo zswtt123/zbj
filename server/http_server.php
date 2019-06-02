@@ -36,6 +36,10 @@ $http->on('request',function($request,$response){
 
       }
 
+       if(!empty($_GET)){
+         unset($_GET);
+       }
+
        if(isset($request->get)){
         foreach($request->get as $k=>$v){
          $_GET[$k] = $v;
