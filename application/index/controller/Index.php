@@ -4,7 +4,7 @@ use app\common\lib\ali\Sms;
 class Index
 {
     public function index()
-    {   
+    {     
     	//print_r($_GET);
         // return 'singwa-hello';
     }
