@@ -5,8 +5,8 @@ class Index
 {
     public function index()
     {
-    	print_r($_GET);
-        return 'singwa-hello';
+    	//print_r($_GET);
+        // return 'singwa-hello';
     }
 
     
