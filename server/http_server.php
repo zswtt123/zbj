@@ -8,7 +8,7 @@ $http->set([
 
 $http->on('request',function($request,$response){
      $response->cookie("singwa","xssss",time()+1800);
-     $response->end("sss",json_encode($request->get));
+     $response->end("sss".json_encode($request->get));
 });
 
 $http->start();
