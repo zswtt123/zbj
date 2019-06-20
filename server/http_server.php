@@ -16,7 +16,7 @@ $http->on('WorkerStart',function(swoole_server $server, $worker_id){
 // define('APP_PATH', __DIR__ . '/../application/');
 
 // require __DIR__ . '/../thinkphp/base.php';
-// });
+});
 
 
 $http->on('request',function($request,$response) use($http){
