@@ -1,6 +1,6 @@
 <?php
 
-$http = new swoole_http_server("0.0.0.0",8811);
+$http = new Swoole\Http\Server("0.0.0.0",8811);
 
 $http->set(
           [
@@ -12,10 +12,10 @@ $http->set(
 );
 $http->on('WorkerStart',function(swoole_server $server, $worker_id){
 
-// 定义应用目录
-// define('APP_PATH', __DIR__ . '/../application/');
+定义应用目录
+define('APP_PATH', __DIR__ . '/../application/');
 
-// require __DIR__ . '/../thinkphp/base.php';
+require __DIR__ . '/../thinkphp/base.php';
 });
 
 
