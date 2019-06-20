@@ -2,7 +2,7 @@
 $http = new swoole_http_server("0.0.0.0",8811);
 
 $http->set([
-    'document_root'=>"/home/work/hdtocs/swoole_mooc/thinkphp/public/static",
+    'document_root'=>"/swoole_live/zbj/public/static",
     'enable_static_handler'=>true,
 ]);
 
