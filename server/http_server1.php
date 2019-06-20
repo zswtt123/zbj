@@ -5,7 +5,7 @@ $http = new Swoole\Http\Server("0.0.0.0",8811);
 $http->set(
           [
             'enable_static_handler' =>true,
-            'document_root'  =>  "/swoole_live/thinkphp/public/static",
+            'document_root'  =>  "/swoole_live/zbj/public/static",
             'worker_num'=>5,
            ]
 
@@ -56,20 +56,20 @@ $http->on('request',function($request,$response) use($http){
 
       }
 
-// ob_start();
-      // 执行应用并响应,默认输出index方法
-      // try{
-// think\Container::get('app', [APP_PATH])
-//     ->run()
-//     ->send();
-// }catch(\Exception $e){
-       //todo
-// }
-//echo "-action-".request()->action().PHP_EOL;
-// $res = ob_get_contents();
-// ob_end_clean();
-// $response->end($res);
-// $http->close();
+ob_start();
+      执行应用并响应,默认输出index方法
+      try{
+think\Container::get('app', [APP_PATH])
+    ->run()
+    ->send();
+}catch(\Exception $e){
+       todo
+}
+echo "-action-".request()->action().PHP_EOL;
+$res = ob_get_contents();
+ob_end_clean();
+$response->end($res);
+$http->close();
 });
 
 
