@@ -1,6 +1,6 @@
 <?php
 use Swoole\Http\Server;
-$http = new Server("0.0.0.0",8812);
+$http = new Server("0.0.0.0",8811);
 
 $http->set([
     'document_root'=>"/home/work/hdtocs/swoole_mooc/thinkphp/public/static",
