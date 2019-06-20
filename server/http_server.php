@@ -1,6 +1,5 @@
 <?php
-use Swoole\Http\Server;
-$http = new Server("0.0.0.0",8811);
+$http = new swoole_http_server("0.0.0.0",8811);
 
 $http->set([
     'document_root'=>"/home/work/hdtocs/swoole_mooc/thinkphp/public/static",
@@ -8,7 +7,7 @@ $http->set([
 ]);
 
 $http->on('request',function($request,$response){
-     $response->cookie("singma","xssss",time()+1800);
+     $response->cookie("singwa","xssss",time()+1800);
      $response->end("sss",json_encode($request->get));
 });
 
