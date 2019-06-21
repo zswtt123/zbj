@@ -28,6 +28,30 @@ use($http){
 
       }
 
+       $_POST=[];
+       if(isset($request->post)){
+        foreach($request->post as $k=>$v){
+         $_POST[$k] = $v;
+        }
+
+      }
+
+       $_SERVER=[];
+       if(isset($request->server)){
+        foreach($request->server as $k=>$v){
+         $_SERVER[$k] = $v;
+        }
+
+      }
+
+       
+       if(isset($request->header)){
+        foreach($request->header as $k=>$v){
+         $_SERVER[strtoupper($k)] = $v;
+        }
+
+      }
+
 	ob_start();
 	try {
 	think\Container::get('app', [APP_PATH])
@@ -40,7 +64,8 @@ use($http){
 	$res = ob_get_contents();
 	ob_end_clean();
 	$response->end($res);
-	 $http->close();
+	//每次每个进程会被closed掉，但是不好
+	 // $http->close();
     
 });
 
