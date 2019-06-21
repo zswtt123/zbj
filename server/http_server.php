@@ -40,7 +40,7 @@ use($http){
 	$res = ob_get_contents();
 	ob_end_clean();
 	$response->end($res);
-	$http->close();
+	 $http->close();
     
 });
 
