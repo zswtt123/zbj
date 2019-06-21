@@ -17,9 +17,23 @@ require __DIR__ . '/../thinkphp/base.php';
 });
 
 
-$http->on('request',function($request,$response){
-     $response->cookie("singwa","xssss",time()+1800);
-     $response->end("sss".json_encode($request->get));
+$http->on('request',function($request,$response)
+use($http){
+
+	ob_start();
+	try {
+	think\Container::get('app', [APP_PATH])
+    ->run()
+    ->send();
+	} catch (Exception $e) {
+		//todo
+	}
+	echo "-action-".request()->action().PHP_EOL;
+	$res = ob_get_contents();
+	ob_end_clean();
+	$response->end($res);
+	$http->close();
+    
 });
 
 $http->start();
