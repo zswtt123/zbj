@@ -20,6 +20,14 @@ require __DIR__ . '/../thinkphp/base.php';
 $http->on('request',function($request,$response)
 use($http){
 
+	 $_GET=[];
+       if(isset($request->get)){
+        foreach($request->get as $k=>$v){
+         $_GET[$k] = $v;
+        }
+
+      }
+
 	ob_start();
 	try {
 	think\Container::get('app', [APP_PATH])
