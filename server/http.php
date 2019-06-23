@@ -23,7 +23,7 @@ class Http{
     }
 
 
-    public function onWorkerStart(){
+    public function onWorkerStart($server,$worker_id){
     //定义应用目录
     define('APP_PATH', __DIR__ . '/../application/');
 
