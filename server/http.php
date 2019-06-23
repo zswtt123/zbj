@@ -4,7 +4,7 @@ class Http{
     const  HOST = "0.0.0.0";
     public $http = null;
     public function __construct(){
-    	$http = new Swoole\Http\Server(self::HOST,self::PORT);
+    	$this->http = new Swoole\Http\Server(self::HOST,self::PORT);
 
 
     	$this->http->set([
