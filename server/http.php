@@ -7,18 +7,18 @@ class Http{
     	$http = new Swoole\Http\Server(self::HOST,self::PORT);
 
 
-    	$http->set([
+    	$this->http->set([
         'document_root'=>"/swoole_live/zbj/public/static",
         'enable_static_handler'=>true,
         'worker_num'=>4,
         'task_worker_num'=>4,
        ]);
 
-    	$this->http->on('workerstart',[$this,'onWorkerStart']);
-    	$this->http->on('request',[$this,'onRequest']);
-    	$this->http->on('task',[$this,'onTask']);
-    	$this->http->on('finish',[$this,'onFinish']);
-    	$this->http->on('close',[$this,'onClose']);
+    	$this->http->on("workerstart",[$this,'onWorkerStart']);
+    	$this->http->on("request",[$this,'onRequest']);
+    	$this->http->on("task",[$this,'onTask']);
+    	$this->http->on("finish",[$this,'onFinish']);
+    	$this->http->on("close",[$this,'onClose']);
         $this->http->start();
     }
 
