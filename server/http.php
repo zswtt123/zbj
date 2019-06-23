@@ -1,6 +1,6 @@
 <?php
 class Http{
-	const  POST = 8811;
+	const  PORT = 8811;
     const  HOST = "0.0.0.0";
     public $http = null;
     public function __construct(){
