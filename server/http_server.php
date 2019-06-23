@@ -7,13 +7,13 @@ $http->set([
       'worker_num'=>5,
 ]);
 
-
-$http->on('WorkerStart',function(swoole_server $server, $worker_id){
-
 //定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
 
 require __DIR__ . '/../thinkphp/base.php';
+$http->on('WorkerStart',function(swoole_server $server, $worker_id){
+
+
 });
 
 
