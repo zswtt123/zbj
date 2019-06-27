@@ -1,10 +1,10 @@
 <?php
 namespace app\admin\controller;
-\use app\common\lib\Util;
+use app\common\lib\Util;
 class Image{
 
 	public function index(){
-		//print_r($_FILES);
+		print_r($_FILES);
 		$file = request()->file('file');
 		$info = $file->move('../public/static/upload');
 		if($info){
