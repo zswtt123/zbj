@@ -1,27 +1,37 @@
 <?php
-class Http{
+class ws{
 	const  PORT = 8811;
     const  HOST = "0.0.0.0";
-    public $http = null;
+    public $ws = null;
     public function __construct(){
-    	$this->http = new Swoole\Http\Server(self::HOST,self::PORT);
+    	$this->ws = new Swoole\WebSocket\Server(self::HOST,self::PORT);
 
 
-    	$this->http->set([
+    	$this->ws->set([
         'document_root'=>"/swoole_live/zbj/public/static",
         'enable_static_handler'=>true,
         'worker_num'=>4,
         'task_worker_num'=>4,
        ]);
 
-    	$this->http->on("workerstart",[$this,'onWorkerStart']);
-    	$this->http->on("request",[$this,'onRequest']);
-    	$this->http->on("task",[$this,'onTask']);
-    	$this->http->on("finish",[$this,'onFinish']);
-    	$this->http->on("close",[$this,'onClose']);
+      $this->ws->on("open",[$this,'onOpen']);
+    	$this->ws->on("workerstart",[$this,'onWorkerStart']);
+    	$this->ws->on("request",[$this,'onRequest']);
+    	$this->ws->on("task",[$this,'onTask']);
+      $this->ws->on("message",[$this,'onMessage']);
+    	$this->ws->on("finish",[$this,'onFinish']);
+    	$this->ws->on("close",[$this,'onClose']);
         $this->http->start();
     }
 
+
+    public function onOpen( $svr, $req){
+
+    }
+
+    public function onMessage($server,$frame){
+
+    }
 
     public function onWorkerStart($server,$worker_id){
     //定义应用目录
@@ -39,6 +49,16 @@ class Http{
          $_GET[$k] = $v;
         }
        }
+
+
+            $_FILES=[];
+       if(isset($request->files)){
+        foreach($request->files as $k=>$v){
+         $_FILES[$k] = $v;
+        }
+       }
+
+
 
        $_POST=[];
        if(isset($request->post)){
@@ -110,5 +130,5 @@ class Http{
 
 }
 
-new http();
+new ws();
 ?>
