@@ -21,7 +21,7 @@ class ws{
       $this->ws->on("message",[$this,'onMessage']);
     	$this->ws->on("finish",[$this,'onFinish']);
     	$this->ws->on("close",[$this,'onClose']);
-        $this->http->start();
+        $this->ws->start();
     }
 
 
@@ -66,7 +66,7 @@ class ws{
          $_POST[$k] = $v;
         }
        }
-       $_POST['http_server'] = $this->http;
+       $_POST['ws'] = $this->ws;
 
        $_SERVER=[];
        if(isset($request->server)){
