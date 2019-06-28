@@ -5,7 +5,7 @@ class Index
 {
     public function index()
     {    
-    dump(1); 
+    // dump(1); 
     	//print_r($_GET);
         // return 'singwa-hello';
     }
