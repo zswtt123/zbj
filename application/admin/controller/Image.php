@@ -7,9 +7,10 @@ class Image{
 		// print_r($_FILES);die;
 		$file = request()->file('file');
 		$info = $file->move('../public/static/upload');
+		print_r(3);
 		if($info){
 			$data = [
-             'image'=>config('live.host')."/upload/".$info->getsaveName(),
+             'image'=>config('live.host')."/upload/".$info->getSaveName(),
 			];
 
 
